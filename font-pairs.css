@@ -1,0 +1,39 @@
+@font-face { font-family: Besley; src: url('assets/fonts/besley-medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Open Runde'; src: url('assets/fonts/open-runde-semibold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: Geist; src: url('assets/fonts/geist.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: Unbounded; src: url('assets/fonts/unbounded.woff2') format('woff2'); font-weight: 200 900; font-style: normal; font-display: swap; }
+.version-three[data-family='lora'] { --body-font: Onest, sans-serif; --pair-heading: Lora, serif; --pair-weight: 500; --pair-size: 56px; --pair-leading: 1.14; --pair-tracking: -.025em; }
+.version-three[data-family='cormorant'] { --body-font: 'Golos Text', sans-serif; --pair-heading: 'Cormorant Garamond', serif; --pair-weight: 600; --pair-size: 68px; --pair-leading: 1.04; --pair-tracking: -.025em; }
+.version-three[data-family='unbounded'] { --body-font: Onest, sans-serif; --pair-heading: Unbounded, sans-serif; --pair-weight: 500; --pair-size: 48px; --pair-leading: 1.16; --pair-tracking: -.045em; }
+.version-three[data-family='besley'] { --body-font: Onest, sans-serif; --pair-heading: Besley, serif; --pair-weight: 500; --pair-size: 52px; --pair-leading: 1.2; --pair-tracking: -.035em; }
+.version-three[data-family='open-runde'] { --body-font: Onest, sans-serif; --pair-heading: 'Open Runde', sans-serif; --pair-weight: 600; --pair-size: 56px; --pair-leading: 1.1; --pair-tracking: -.04em; }
+.version-three[data-family='geist'] { --body-font: Geist, sans-serif; --pair-heading: Geist, sans-serif; --pair-weight: 600; --pair-size: 58px; --pair-leading: 1.08; --pair-tracking: -.045em; }
+.version-three.landing-design:is([data-family='lora'], [data-family='cormorant'], [data-family='unbounded'], [data-family='besley'], [data-family='open-runde'], [data-family='geist']) :is(.hero h1, main h2, .closing h2) {
+  font-family: var(--pair-heading); font-weight: var(--pair-weight); font-size: var(--pair-size);
+  line-height: var(--pair-leading); letter-spacing: var(--pair-tracking); font-optical-sizing: auto;
+  text-wrap: balance;
+}
+.version-three.landing-design[data-family='cormorant'] :is(main h2, .closing h2) { font-size: 60px; }
+.version-three.landing-design[data-family='lora'] :is(main h2, .closing h2) { font-size: 52px; }
+.version-three.landing-design[data-family='unbounded'] :is(main h2, .closing h2) { font-size: 42px; }
+.version-three.landing-design[data-family='besley'] :is(main h2, .closing h2) { font-size: 46px; }
+.version-three.landing-design[data-family='open-runde'] :is(main h2, .closing h2) { font-size: 50px; }
+.version-three.landing-design[data-family='geist'] :is(main h2, .closing h2) { font-size: 52px; }
+.version-three .font-choices button { flex-direction: column; align-items: flex-start; gap: 3px; text-align: left; padding: 12px; }
+.version-three .font-choices button[aria-pressed='true'] { background: #eee6f6; border-color: #0006; }
+@media (max-width: 760px) {
+  .version-three[data-family='besley'] { --pair-size: clamp(28px, 6.3vw, 37px); }
+  .version-three[data-family='open-runde'] { --pair-size: clamp(30px, 6.8vw, 40px); }
+  .version-three[data-family='geist'] { --pair-size: clamp(30px, 6.8vw, 40px); }
+  .version-three.landing-design[data-family='besley'] :is(main h2, .closing h2) { font-size: 28px; }
+  .version-three.landing-design[data-family='open-runde'] :is(main h2, .closing h2),
+  .version-three.landing-design[data-family='geist'] :is(main h2, .closing h2) { font-size: 30px; }
+  .version-three[data-family='lora'] { --pair-size: clamp(30px, 6.8vw, 40px); }
+  .version-three[data-family='cormorant'] { --pair-size: clamp(36px, 8vw, 46px); }
+  .version-three[data-family='unbounded'] { --pair-size: clamp(26px, 5.8vw, 34px); }
+  .version-three.landing-design[data-family='lora'] :is(main h2, .closing h2) { font-size: 30px; }
+  .version-three.landing-design[data-family='cormorant'] :is(main h2, .closing h2) { font-size: 36px; }
+  .version-three.landing-design[data-family='unbounded'] :is(main h2, .closing h2) { font-size: 26px; }
+  .version-three[data-font-review] .concept-review { display: block; }
+  .version-three[data-font-review] .concept-review > summary { font-size: 12px; padding: 8px 12px; }
+}

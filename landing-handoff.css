@@ -1,0 +1,66 @@
+/* Approved Figma landing: navigation, benefits, footer — 2 November 2026. */
+body.version-three.suisse .audience-disclosure{position:relative}
+body.version-three.suisse .audience-toggle{display:flex;align-items:center;gap:6px;border:0;padding:12px 0;background:none;color:inherit;font:inherit;white-space:nowrap;cursor:pointer}
+.audience-toggle[aria-expanded=true] span{transform:rotate(180deg)}
+body.version-three.suisse .header .audience-links{position:absolute;top:calc(100% + 12px);left:0;width:232px;padding:8px;display:flex;flex-direction:column;gap:0;background:#fff;border-radius:16px;box-shadow:0 8px 24px rgb(0 0 0/.08);z-index:60}
+body.version-three.suisse .header .audience-links[hidden]{display:none}
+body.version-three.suisse .header #main-navigation .audience-links a{display:flex;align-items:center;min-height:40px;padding:8px 12px;border-radius:8px;font-size:14px;line-height:24px;text-decoration:none;white-space:normal;color:#000}
+body.version-three.suisse .header #main-navigation .audience-links a:hover{background:rgb(0 0 0/.02)}
+body.version-three.suisse :is(.audience-toggle,.audience-links a,.site-footer a):focus-visible{outline:2px solid #b779ff;outline-offset:2px;border-radius:4px}
+body.version-three.suisse .site-footer{padding:48px max(32px,calc((100vw - 1248px)/2)) 32px}
+body.version-three.suisse .footer-main{display:grid;grid-template-columns:264fr 160fr 168fr 176fr 272fr;gap:40px}
+body.version-three.suisse .footer-intro{grid-column:auto;display:flex;flex-direction:column;gap:16px}
+body.version-three.suisse .footer-intro>p{font-size:14px;line-height:22px;margin:0;color:var(--text-secondary)}
+body.version-three.suisse .footer-contacts{display:flex;flex-direction:column;gap:8px}
+body.version-three.suisse .site-footer nav{display:flex;flex-direction:column;gap:8px;min-width:0}
+body.version-three.suisse .site-footer nav h3{font-size:14px;line-height:20px;margin:0;font-weight:600}
+body.version-three.suisse .site-footer :is(nav a,.footer-contacts a){font-size:14px;line-height:22px;color:var(--text-secondary);text-decoration:none;min-height:0;overflow-wrap:anywhere}
+body.version-three.suisse .site-footer a:hover{text-decoration:underline}
+body.version-three.suisse .footer-company{display:grid;grid-template-columns:560fr 608fr;gap:32px;margin-top:32px;padding-top:32px;border-top:1px solid var(--border-default);font-size:13px;line-height:20px;color:var(--text-secondary)}
+.footer-company>div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.footer-company p,.footer-company address{margin:0;font-size:inherit;line-height:inherit;font-style:normal}
+.footer-company .company-name{font-size:14px;line-height:20px;font-weight:600;color:var(--text-secondary)}
+body.version-three.suisse .footer-bottom{border:0;margin-top:32px;padding:0;display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:24px;flex-wrap:nowrap;font-size:12px;line-height:18px}
+body.version-three.suisse .footer-bottom .footer-badges{display:flex;gap:24px;align-items:center;flex-wrap:nowrap}
+body.version-three.suisse .footer-badges .innopolis-mark{width:105.34px;height:20px;margin:0}
+body.version-three.suisse .footer-origin{font-size:12px;white-space:nowrap}
+body.version-three.suisse .benefits p{max-width:380px}
+@media(min-width:761px) and (max-width:1150px){
+ body.version-three.suisse .footer-main{grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 24px}
+ body.version-three.suisse .footer-intro{grid-column:1/-1;max-width:320px}
+ body.version-three.suisse .footer-company{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+ body.version-three.suisse .site-footer{padding:32px 24px}
+ body.version-three.suisse .footer-main{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px}
+ body.version-three.suisse .footer-intro,body.version-three.suisse .footer-support,body.version-three.suisse .footer-documents{grid-column:1/-1}
+ body.version-three.suisse .footer-intro{gap:12px}
+ body.version-three.suisse .footer-company{grid-template-columns:1fr;gap:8px;margin-top:24px;padding-top:24px}
+ body.version-three.suisse .footer-company>div{display:contents}
+ body.version-three.suisse .footer-company address{order:1}
+ body.version-three.suisse .footer-bottom{margin-top:24px;gap:12px}
+ body.version-three.suisse .footer-badges .innopolis-mark{width:140px;height:26.58px}
+ body.version-three.suisse .footer-origin{display:none}
+ body.version-three.suisse .benefits article{min-height:240px;height:auto}
+ body.version-three.suisse .benefits p{max-width:none}
+ body.version-three.suisse .header #main-navigation.is-open{position:absolute;top:52px;left:0;right:0;bottom:auto;width:auto;max-height:calc(100dvh - 92px);padding:16px;border-radius:16px;background:#fff;box-shadow:0 8px 24px rgb(0 0 0/.08)}
+ body.version-three.suisse .mobile-menu-backdrop:not([hidden]){background:rgb(0 0 0/.12)}
+ body.version-three.suisse .mobile-nav-groups{display:flex;flex-direction:column;gap:16px}
+ body.version-three.suisse .mobile-nav-group{display:flex;flex-direction:column;gap:0}
+ body.version-three.suisse .mobile-nav-group h3{margin:0;font-size:14px;line-height:24px;font-weight:400;color:var(--text-secondary)}
+ body.version-three.suisse .header #main-navigation .mobile-nav-group a{font-size:14px;line-height:22px;min-height:40px;padding:8px 12px;color:#000}
+ body.version-three.suisse .header #main-navigation .mobile-nav-group a:hover{background:rgb(0 0 0/.02)}
+}
+
+/* Benefits: align the approved cards, replacing legacy badge spacing. */
+body.version-three.suisse .benefits .benefit-marker{display:none}
+body.version-three.suisse .benefits article{height:240px;min-height:240px;justify-content:flex-end;padding:30px 28px}
+body.version-three.suisse .benefits h3{font-size:28px;line-height:32px;margin:0 0 10px;letter-spacing:-.5px}
+body.version-three.suisse .benefits p{width:280px;max-width:100%;font-size:13px;line-height:20px}
+body.version-three.suisse .benefits article:first-child p{width:300px}
+body.version-three.suisse .benefits article:last-child p{width:314px}
+@media(max-width:760px){
+ body.version-three.suisse .benefits article{padding:24px;justify-content:flex-start}
+ body.version-three.suisse .benefits h3{font-size:22px;line-height:24px;margin:0 0 8px}
+ body.version-three.suisse .benefits article:nth-child(n) p{width:280px;max-width:100%}
+}

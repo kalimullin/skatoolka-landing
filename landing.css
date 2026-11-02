@@ -1,0 +1,268 @@
+/* Main landing typography and icon exports from Figma node 28:534. */
+@font-face {
+  font-family: Besley;
+  src: url('assets/fonts/besley-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Besley;
+  src: url('assets/fonts/besley-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Preserve the other type studies and the Literata details in the design. */
+.landing-design:where(:not([data-type]), [data-type=original]) :is(.hero h1, main h2) {
+  font-family: Besley, Georgia, serif;
+  font-weight: 500;
+  font-variation-settings: normal;
+  word-spacing: normal;
+}
+.landing-design:where(:not([data-type]), [data-type=original]) .header .brand {
+  font-family: Besley, Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -.8px;
+}
+.landing-design:where(:not([data-type]), [data-type=original]) .hero h1 {
+  font-size: clamp(26px, 7.8vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -.05140625em;
+}
+.landing-design:where(:not([data-type]), [data-type=original]) main h2 {
+  letter-spacing: -.03846154em;
+  line-height: 1.07692308;
+}
+.landing-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  pointer-events: none;
+}
+.landing-design .header-actions > a { gap: 8px; }
+
+@media (min-width: 761px) {
+  .landing-design:where(:not([data-type]), [data-type=original]) .hero h1 {
+    font-size: 64px;
+    line-height: 64px;
+    letter-spacing: -3.29px;
+  }
+  .landing-design:where(:not([data-type]), [data-type=original]) main h2 {
+    font-size: 52px;
+    line-height: 56px;
+    letter-spacing: -2px;
+  }
+}
+
+/* Review 05: current Figma details and the requested interactive treatments. */
+.landing-design .header .brand,
+.landing-design .footer .brand {
+  font-family: Besley, Georgia, serif;
+  font-size: 21.75px;
+  font-weight: 700;
+  letter-spacing: -.6px;
+  line-height: normal;
+}
+.landing-design .header nav {
+  border-radius: 16px;
+  padding: 12px 24px;
+  gap: 24px;
+  line-height: 22px;
+}
+.landing-design .header #login { border-radius: 16px; padding: 12px 20px; min-height: 48px; }
+.landing-design .header-actions { gap: 24px; }
+.landing-design .composer { padding: 20px; }
+.landing-design .composer label,
+.landing-design .composer:has(textarea:focus) label { color: rgb(0 0 0 / .68); }
+.landing-design .prompt-placeholder,
+.landing-design .composer textarea::placeholder { color: rgb(0 0 0 / .56); }
+.landing-design .has-animated-example textarea::placeholder { color: transparent; }
+.landing-design .composer-actions > .disclosure-button {
+  background: #fff;
+  border: 1px solid rgb(36 35 33 / .1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  gap: 8px;
+  min-height: 48px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.landing-design .composer .primary { gap: 8px; }
+.landing-design .hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--spectrum-fade-depth);
+  z-index: 0;
+  pointer-events: none;
+  /* Cosine ease: no hard start, color band, or visible bottom seam. */
+  background: linear-gradient(to bottom,
+    rgb(248 248 247 / 0) 0%, rgb(248 248 247 / .00856) 10%,
+    rgb(248 248 247 / .05792) 20%, rgb(248 248 247 / .16308) 30%,
+    rgb(248 248 247 / .31744) 40%, rgb(248 248 247 / .5) 50%,
+    rgb(248 248 247 / .68256) 60%, rgb(248 248 247 / .83692) 70%,
+    rgb(248 248 247 / .94208) 80%, rgb(248 248 247 / .99144) 90%,
+    var(--paper) 100%);
+}
+.landing-design .round-link { display: inline-flex; align-items: center; justify-content: center; padding: 0; }
+.landing-design .pricing-layout > div > a,
+.landing-design .faq-section > div > p > a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.landing-design .pricing-layout > div > a:hover,
+.landing-design .faq-section > div > p > a:hover { color: #786780; }
+.landing-design .closing .primary { gap: 8px; }
+.landing-design .faq summary::after { content: ''; width: 16px; height: 16px; top: 24px; background: url('assets/icons/figma-faq-plus.svg') center / 16px no-repeat; }
+.landing-design .faq details[open] > summary::after { transform: rotate(45deg); }
+.landing-design:where(:not([data-type]), [data-type=original]) .benefits h3 {
+  font-family: Besley, Georgia, serif; font-weight: 500; font-size: 24px; line-height: 1.2; letter-spacing: -1px;
+}
+
+/* Each original Meez preview keeps its complete composition. */
+.template-preview {
+  display: block; position: relative; width: 100%; padding: 0;
+  aspect-ratio: 1280 / 956; border: 1px solid rgb(36 35 33 / .1);
+  border-radius: 16px; overflow: hidden; background: #eeede8;
+  isolation: isolate;
+}
+.template-preview > img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.template-open {
+  position: absolute; left: 50%; bottom: 20px; white-space: nowrap;
+  display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+  border: 1px solid #292824; border-radius: 10px;
+  background: #292824; color: #fff; box-shadow: 0 4px 16px #0003; font-size: 14px;
+  opacity: 0; transform: translate(-50%, 6px);
+  transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out);
+}
+.template-open .landing-icon { filter: brightness(0) invert(1); }
+.template-preview:focus-visible .template-open { opacity: 1; transform: translate(-50%, 0); }
+.templates-action { text-align: center; margin-top: 40px; }
+.templates-action .button { gap: 8px; border-radius: 12px; font-weight: 400; background: transparent; }
+.template-dialog-image { display: block; width: 100%; height: auto; border-radius: 12px; margin-top: 20px; }
+.template-source { font-size: 12px; }
+
+/* Dia-style scroll story: sticky navigation beside three successive screens. */
+.interactive-process { align-items: start; }
+.interactive-process .process-story { display: flex; flex-direction: column; gap: 12px; width: 100%; position: sticky; top: clamp(24px, calc(100vh - 540px), 20vh); margin: 0; }
+.process-step {
+  display: block; position: relative; text-align: left; width: 100%;
+  background: transparent; border: 0; border-radius: 12px;
+  padding: 20px 24px; color: var(--muted);
+  transition: background 180ms ease, color 180ms ease;
+}
+.process-step::before { content: ''; position: absolute; top: 20px; bottom: 20px; left: 0; width: 2px; background: #24232125; border-radius: 2px; }
+.process-step.active::before { background: var(--ink); }
+.process-step .step-number { margin-bottom: 10px; }
+.step-title { display: block; font: 500 24px/1.2 Besley, Georgia, serif; letter-spacing: -1px; }
+.step-description { display: grid; grid-template-rows: 0fr; font-size: 13px; line-height: 1.5; max-width: 310px; opacity: 0; transition: grid-template-rows 200ms var(--ease-out), opacity 200ms var(--ease-out); }
+.step-description > span { min-height: 0; overflow: hidden; }
+.process-step.active { color: var(--ink); background: rgb(36 35 33 / .035); }
+.process-step.active .step-description { grid-template-rows: 1fr; opacity: 1; color: var(--muted); }
+.step-description > span::before { content: ""; display: block; height: 12px; }
+.process-panels { min-width: 0; display: flex; flex-direction: column; gap: 60px; }
+.process-scene { min-height: 60vh; margin: 0; scroll-margin-top: 20vh; }
+.process-scene-caption { display: none; }
+.process-scene.will-reveal .process-panel { opacity: 0; transform: scale(.97); transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out); }
+.process-scene.is-revealed .process-panel { opacity: 1; transform: none; }
+.instant-process .step-description, .instant-process .process-panel { transition: none; }
+.instant-process .process-panel { opacity: 1; transform: none; }
+.process-panel .editor-window { height: auto; }
+.process-panel .editor-site { min-width: 0; }
+.process-panel.step-1 { background: #e9e4ed; }
+.process-panel.step-1 .editor-site { background: #f0e8f5; }
+.process-panel.step-1 .editor-site h3 { color: #534260; }
+.process-panel.step-1 .editor-menu { background: #756084; }
+.process-panel.step-1 .chat-user { background: #eae2ee; }
+.process-panel.step-1 .editor-site-foot { align-items: flex-start; }
+.process-panel.step-2 { background: #e0e9df; }
+.process-panel.step-2 .publish-chip { display: flex; align-items: center; gap: 5px; color: #416347; }
+.published-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #53865b; }
+.process-panel .published-link { font-size: 13px; transform: none; }
+.process-panel .floating-request { pointer-events: none; }
+
+/* Foil and glare are decorative layers; the tariff text remains stationary and readable. */
+.holo-card { transform-style: preserve-3d; will-change: auto; }
+.holo-card.is-hovered { will-change: transform; }
+.holo-card > :not(.holo-foil, .holo-glare) { position: relative; z-index: 2; }
+.holo-foil, .holo-glare { position: absolute; inset: 0; z-index: 1; pointer-events: none; border-radius: inherit; opacity: 0; transition: opacity 200ms ease; }
+.holo-foil {
+  background:
+    repeating-linear-gradient(125deg,transparent 0 2px,#ffffff55 2px 3px,transparent 3px 5px),
+    repeating-linear-gradient(115deg,#a7e9dc45 0%,#a5c7ff50 12%,#dfb5fa55 24%,#ffb9cd50 36%,#ffe7ab65 48%,#a7e9dc45 60%);
+  background-size: 12px 12px, 250% 250%; background-position: center, var(--foil-x,50%) var(--foil-y,50%);
+  mix-blend-mode: multiply;
+}
+.holo-glare {
+  background: radial-gradient(ellipse at var(--glare-x,50%) var(--glare-y,50%),#fff9,transparent 62%),
+    linear-gradient(115deg,transparent 40%,#fff9 50%,transparent 60%);
+  background-size: 100% 100%, 240% 240%;
+  background-position: center, var(--glare-x,50%) var(--glare-y,50%);
+  mix-blend-mode: soft-light;
+}
+.holo-card.is-hovered .holo-foil { opacity: .7; }
+.holo-card.is-hovered .holo-glare { opacity: .8; }
+.holo-card:focus-within .holo-foil { opacity: .3; }
+
+/* One review panel for all existing type and gradient studies. */
+.landing-design .type-panel { max-height: min(720px,calc(100dvh - 100px)); overflow-y: auto; overscroll-behavior: contain; }
+.gradient-picker { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.gradient-picker .gradient-options { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.gradient-picker .gradient-options button { justify-content: flex-start; white-space: normal; font-size: 11px; min-height: 40px; }
+.gradient-picker .gradient-caption { font-size: 10px; margin: 12px 0; }
+.gradient-picker .gradient-pause { font-size: 11px; margin: 0; }
+.swatch-spotlight-amber { background: linear-gradient(130deg,#ffc51a,#ff9c29,#ff4230); }
+.swatch-spotlight-arctic { background: linear-gradient(130deg,#66e4b7,#49cdda,#2160ff); }
+.swatch-spotlight-spectrum, .swatch-original { background: linear-gradient(100deg,#0358f7,#e1ecfe,#ffd400,#fd02f5); }
+.landing-design .hero[data-gradient=original] .gradient-art { display: none; }
+.landing-design .hero[data-gradient=original] .spectrum-fade { display: block; }
+
+@media (hover: hover) and (pointer: fine) {
+  .template-preview:hover .template-open { opacity: 1; transform: translate(-50%, 0); }
+  .landing-design .composer-actions > .disclosure-button:hover { background: #f6f5f3; border-color: rgb(36 35 33 / .2); }
+  .process-step:not(.active):hover { background: rgb(36 35 33 / .025); color: var(--ink); }
+}
+@media (min-width: 761px) { .landing-design .hero { padding-top: 180px; } }
+@media (max-width: 1050px) { .process-step { padding: 18px; } .step-title { font-size: 21px; } }
+@media (max-width: 760px) {
+  .landing-design .header nav { padding: 8px 0; }
+  .landing-design .header #login { min-height: 40px; padding: 8px 16px; }
+  .landing-design .composer { padding: 20px 16px; }
+  .template-grid { max-width: 520px; }
+
+  .templates-action { margin-top: 30px; }
+  .interactive-process { gap: 24px; }
+  .interactive-process .process-story { display: none; }
+  .process-scene { min-height: 0; }
+  .process-scene-caption { display: block; padding: 24px 4px 0; }
+  .process-scene-caption h3 { font: 500 24px/1.2 Besley, Georgia, serif; letter-spacing: -1px; margin-bottom: 12px; }
+  .process-scene-caption p { font-size: 14px; color: var(--muted); max-width: 38ch; }
+  .process-scene-caption .step-number { display: block; }
+  .process-step { padding: 14px 18px; }
+  .process-step::before { top: 14px; bottom: 14px; }
+  .process-step .step-number { display: inline-block; margin: 0 10px 0 0; vertical-align: middle; }
+  .process-step .step-title { display: inline; font-size: 20px; }
+  .process-step.active .step-description { max-width: 100%; padding-left: 28px; }
+  .landing-design .type-review { right: 12px; bottom: 12px; }
+  .gradient-picker .gradient-options button { flex-direction: row; padding: 6px; }
+  .landing-design .type-panel { max-height: calc(100dvh - 92px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .template-open, .process-step, .step-description, .holo-foil, .holo-glare { transition: none; }
+  .process-scene.will-reveal .process-panel { opacity: 1; transform: none; transition: none; }
+  .holo-card { transform: none !important; }
+}
+
+/* One text size for actionable labels; retain each control's existing weight. */
+.landing-design { --action-font-size: 14px; }
+.landing-design .header .small,
+.landing-design :is(.button, .tool, .text-button, .template-open, .header nav a, .header-actions > a, .pricing-layout > div > a, .faq-section a, .faq summary, .footer > div > a) {
+  font-size: var(--action-font-size);
+  line-height: 20px;
+}
+@media (hover: none), (pointer: coarse) {
+  .template-open { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.template-preview[data-template="6"] { background: linear-gradient(#ff5100, #ff9c00); }

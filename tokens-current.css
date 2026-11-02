@@ -1,0 +1,26 @@
+/* Current Figma Theme → semantic CSS aliases. Light is the approved product mode. */
+body.version-three.suisse {
+  --bg-canvas: #f8f8f7;
+  --bg-surface: #fff;
+  --bg-transparent: transparent;
+  --bg-subtle: rgb(0 0 0 / .03);
+  --bg-hover: rgb(0 0 0 / .05);
+  --bg-pressed: rgb(0 0 0 / .08);
+  --bg-primary: #000;
+  --bg-suggestion: rgb(255 255 255 / .85);
+  --bg-suggestion-strong: rgb(255 255 255 / .9);
+  --text-strong: #000;
+  --text-primary: rgb(0 0 0 / .9);
+  --text-secondary: rgb(0 0 0 / .7);
+  --text-muted: rgb(0 0 0 / .5);
+  --text-disabled: rgb(0 0 0 / .2);
+  --text-inverse: #fff;
+  --border-default: rgb(0 0 0 / .1);
+  --border-focus: rgb(0 0 0 / .6);
+  --accent-pricing-warm: #f6e3f4;
+  --accent-pricing-cool: #e4f4fa;
+  --radius-control: 16px;
+  --radius-accordion: 8px;
+  --radius-pill: 999px;
+  --outline-image: var(--border-default);
+}

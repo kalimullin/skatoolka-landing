@@ -1,0 +1,99 @@
+/* Geist page: reuse the site's spacing, neutral palette and control tokens. */
+.version-three.landing-design[data-family="geist"] .hero {
+  --hero-content-top: calc(var(--space-8) * 3 + var(--space-4));
+  --hero-content-bottom: var(--hero-content-top);
+  display: grid;
+  grid-template-rows: minmax(min-content, calc(100svh - var(--hero-content-top) - var(--hero-content-bottom))) 1fr;
+  padding-block: var(--hero-content-top) 0;
+}
+.version-three[data-family="geist"] .hero-content { z-index: 1; align-self: center; }
+.version-three[data-family="geist"] .hero :is(h1, .hero-copy) { position: relative; z-index: 3; }
+.version-three[data-family="geist"] .hero-copy { margin: var(--space-2) auto var(--space-6); }
+.version-three[data-family="geist"] .hero .composer { position: relative; z-index: 2; }
+.version-three[data-family="geist"] .examples { padding-top: var(--space-8); }
+@media (max-width: 760px) {
+  .version-three.landing-design[data-family="geist"] .hero {
+    /* Centre below the mobile header while preserving the full gradient height. */
+    --hero-content-top: calc(76px + var(--space-8));
+    --hero-content-bottom: var(--space-8);
+  }
+}
+/* Match the established hero type scale, including its 768px breakpoint. */
+.version-three.landing-design[data-family="geist"] .hero h1 {
+  font-size: 30px; line-height: 1.1; letter-spacing: -.04em;
+  white-space: normal; text-wrap: balance;
+}
+@media (min-width: 768px) {
+  .version-three.landing-design[data-family="geist"] .hero h1 {
+    font-size: 48px; letter-spacing: -1.92px;
+  }
+}
+.version-three .template-grid { row-gap: 40px; }
+.version-three .plans-section { padding-block: 100px; }
+.plans-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); align-items: stretch; }
+.version-three .plan-card {
+  position: relative; display: flex; flex-direction: column; min-width: 0;
+  padding: var(--space-6); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  background: #fff; color: var(--ink); text-align: left;
+}
+.plan-badge, .plan-badge-space { display: block; align-self: flex-start; height: 28px; margin-bottom: var(--space-4); }
+.plan-badge { padding: var(--space-1) var(--space-2); font-size: 12px; font-weight: 500; line-height: 18px; border-radius: var(--control-radius); background: #ffffffa8; border: 1px solid #ffffffc4; }
+.version-three .plan-card h3 { margin: 0 0 12px; font-size: 23px; line-height: 1.2; font-weight: 600; letter-spacing: -.04em; }
+.version-three .plan-description { min-height: 63px; margin: 0; font-size: 14px; line-height: 21px; color: var(--muted); }
+.version-three .plan-price { margin: var(--space-6) 0; color: var(--ink); font-size: 38px; line-height: 1; font-weight: 600; letter-spacing: -.05em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.plan-price span { font-size: 14px; line-height: 20px; letter-spacing: normal; font-weight: 400; color: var(--ink); }
+.plan-limits { margin: 0; padding: var(--space-6) 0 var(--space-2); border-top: 1px solid var(--line); }
+.plan-limits > div { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); margin-bottom: var(--space-4); font-size: 14px; line-height: 20px; }
+.plan-limits dt { color: var(--muted); }
+.plan-limits dd { margin: 0; font-size: 16px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.version-three .plan-domain { margin: 0 0 var(--space-6); font-size: 14px; color: var(--ink); }
+.version-three .plan-domain.is-muted { color: var(--muted); }
+.version-three .plan-card .plan-cta { width: 100%; min-height: var(--control-height); margin-top: auto; padding: var(--space-3) var(--space-2); font-size: 14px; line-height: 20px; border-radius: var(--control-radius); background: #fff; border: 1px solid var(--line); color: var(--ink); box-shadow: none; text-decoration: none; transition: background 150ms var(--ease-out), transform 150ms var(--ease-out); }
+.version-three .plan-featured {
+  border-color: #ffffffc4;
+  background: radial-gradient(ellipse at 100% 0%, #a9bdff40, transparent 60%), radial-gradient(ellipse at 0% 95%, #ffb6d640, transparent 70%), linear-gradient(135deg, #fbf5fd, #f4f1fc 52%, #eef7ff);
+  box-shadow: 0 0 0 1px var(--line);
+}
+.version-three .plan-featured .plan-cta { background: var(--strong); border-color: var(--strong); color: #fff; }
+.version-three .plan-card .plan-cta:active { transform: scale(.96); }
+@media (hover: hover) and (pointer: fine) {
+  .version-three .plan-card .plan-cta:hover { background: var(--paper); }
+  .version-three .plan-featured .plan-cta:hover { background: var(--gray-60); }
+}
+.plan-featured.holo-card.is-hovered .holo-foil { opacity: .4; }
+.plan-featured.holo-card.is-hovered .holo-glare { opacity: .5; }
+.version-three .plans-note { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2) var(--space-6); margin: var(--space-6) auto 0; text-align: left; font-size: 14px; line-height: 24px; color: var(--muted); }
+.plans-note a { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; color: var(--ink); text-decoration: none; border-radius: var(--radius-sm); }
+.plans-note a:hover { color: var(--muted); text-decoration: none; }
+.plans-note .landing-icon { opacity: 1; }
+@media (max-width: 1099px) and (min-width: 761px) {
+  .plans-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+}
+@media (max-width: 760px) {
+  .version-three .plans-section { padding-block: 64px; }
+  .plans-grid { grid-template-columns: 1fr; gap: 16px; max-width: 460px; margin-inline: auto; }
+  .version-three .plan-card { padding: 24px; }
+  .plan-badge-space { display: none; }
+  .version-three .plan-description { min-height: 0; }
+  .version-three .plan-price { margin-block: var(--space-6); }
+  .version-three .plans-note { max-width: 460px; }
+  .version-three .template-grid { row-gap: 32px; }
+}
+
+
+/* Equal side columns centre navigation independently of the logo and sign-in. */
+@media (min-width: 761px) {
+  .version-three.landing-design .header { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: var(--space-4); }
+  .version-three.landing-design .header #main-navigation { justify-self: center; }
+  .version-three .header > .brand { justify-self: start; }
+  .version-three .header-actions { justify-self: end; }
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .version-three.landing-design .header .brand { font-size: 22px; }
+  .version-three .desktop-nav-links { gap: var(--space-2); }
+}
+@media (max-width: 760px) {
+  .version-three.landing-design[data-family='geist'] :is(main h2, .closing h2) { font-size: 28px; }
+  .version-three.landing-design[data-family='geist'] .benefits h3 { font-size: 22px; }
+  .version-three[data-family='geist'] .plan-card h3 { font-size: 22px; }
+}

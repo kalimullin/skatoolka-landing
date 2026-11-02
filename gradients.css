@@ -1,0 +1,76 @@
+/* Three art directions, sharing the existing hero's composition. */
+.gradient-art { position:absolute; inset:0; z-index:0; pointer-events:none; display:none; }
+.gradient-canvas { display:block; width:100%; height:100%; opacity:0; transition:opacity 200ms var(--ease-out); }
+.gradient-art[data-renderer="webgl"] .gradient-canvas { opacity:1; }
+.hero[data-gradient]:not([data-gradient="original"]) .spectrum-fade { display:none; }
+.hero[data-gradient]:not([data-gradient="original"]) .gradient-art { display:block; }
+/* A static composition remains available without WebGL. */
+.hero[data-gradient="silk"] .gradient-art { background:radial-gradient(ellipse at 76% 68%,#c7c0ec90,transparent 43%),radial-gradient(ellipse at 25% 73%,#a7d3e780,transparent 42%),radial-gradient(ellipse at 52% 76%,#ffd7c3b0,transparent 38%); }
+.hero[data-gradient="light"] .gradient-art { background:radial-gradient(ellipse at 50% 70%,#fff6dc,transparent 22%),conic-gradient(from 285deg at 50% 90%,transparent 0deg,#ffcb9c99 30deg,#eda6c1aa 70deg,#b5a3e6aa 120deg,transparent 155deg); mask-image:linear-gradient(transparent 28%,#000 56%,#000 75%,transparent 100%); }
+.hero[data-gradient="watercolor"] .gradient-art { background:radial-gradient(ellipse at 24% 64%,#8fcbbbaf,transparent 37%),radial-gradient(ellipse at 77% 66%,#7db8e6ac,transparent 37%),radial-gradient(ellipse at 46% 77%,#f1d27baa,transparent 33%); }
+.hero .gradient-art[data-renderer="webgl"] { background:none; mask-image:none; }
+.gradient-review { position:fixed; z-index:21; left:18px; bottom:18px; width:570px; max-width:calc(100vw - 36px); padding:13px; border:1px solid #deded6; border-radius:17px; background:#fffffff0; box-shadow:0 8px 32px #26243b10; backdrop-filter:blur(20px); color:#393935; font:12px/1.4 'Golos Text',sans-serif; }
+.gradient-review-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0 3px 10px; color:#62625c; font-size:11px; }
+.gradient-pause { padding:5px 10px; margin:-4px -2px; min-height:30px; border:1px solid #e0e0d9; border-radius:7px; background:transparent; color:#42423e; font:inherit; }
+.gradient-pause:disabled { opacity:.6; cursor:default; }
+.gradient-options { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; }
+.gradient-options button { display:flex; align-items:center; justify-content:center; gap:7px; min-height:44px; padding:7px; border:1px solid transparent; border-radius:9px; background:transparent; color:#62625c; font:inherit; white-space:nowrap; }
+.gradient-options button[aria-pressed="true"] { background:#f0f0eb; border-color:#d8d8d0; color:#252520; }
+.gradient-swatch { width:22px; height:22px; flex:0 0 22px; border-radius:50%; box-shadow:inset 0 0 0 1px #2525250b; }
+.swatch-silk { background:linear-gradient(145deg,#a8cde6,#efe8fc 45%,#b6a5d7 60%,#ffddc6); }
+.swatch-light { background:conic-gradient(from 280deg at 50% 100%,#fff1da,#ffbe8a,#efadc2,#ad9bdf,#fff1da); }
+.swatch-watercolor { background:conic-gradient(#c7dcad,#9bcbbb,#a0cceb,#f3de99,#c7dcad); }
+.swatch-original { background:linear-gradient(90deg,#d48ab0,#d9e082,#93cdaa,#84b8e1,#b5a3d5); }
+.gradient-caption { margin:10px 3px 0; font-size:11px; color:#686860; }
+@media (hover:hover) and (pointer:fine) { .gradient-options button:hover,.gradient-pause:hover:not(:disabled) { background:#f4f4ef; color:#252520; } }
+@media(max-width:850px) { .type-review { bottom:158px; } }
+@media(max-width:600px) {
+  .gradient-review { left:10px; bottom:10px; max-width:calc(100vw - 20px); padding:10px; border-radius:14px; }
+  .gradient-review-heading { padding-bottom:8px; }
+  .gradient-options { gap:3px; }
+  .gradient-options button { flex-direction:column; gap:5px; padding:7px 2px; font-size:10px; min-height:61px; }
+  .gradient-caption { font-size:10px; margin-top:8px; }
+  .type-review { right:18px; top:116px; bottom:auto; }
+  .type-review > summary { min-height:30px; padding:5px 9px; font-size:10px; border-radius:8px; }
+  .type-panel { top:40px; bottom:auto; }
+}
+@media(prefers-reduced-motion:reduce) { .gradient-canvas { transition:none; } }
+
+/* Light studies: the upper lip of the actual input is the emitter. */
+.gradient-review { width:650px; }
+.gradient-playback { display:flex; align-items:center; gap:12px; }
+.gradient-replay { border:0; padding:5px 0; background:none; color:#4f4968; font:inherit; cursor:pointer; }
+.gradient-replay:disabled { opacity:.45; cursor:default; }
+.swatch-spotlight { background:conic-gradient(from 325deg at 50% 100%,#ffcf8a,#fffef1 40deg,#dcc6df 78deg,#f0edf4 90deg); }
+.swatch-aperture { background:linear-gradient(0deg,#c9b3e7,#ffe0b0 45%,#fff 49%,#fff 54%,#f4d0be 65%,#f4eced); }
+.swatch-godrays { background:repeating-conic-gradient(from 305deg at 50% 100%,#f5d8c6 0deg 10deg,#fffae6 15deg 23deg,#d3c7e5 28deg 35deg); }
+.aperture-glow { position:absolute; z-index:2; top:-1px; left:13%; width:74%; height:2px; border-radius:50%; pointer-events:none; opacity:0; background:#fffdf4; box-shadow:0 -1px 4px 1px #fffef4,0 -5px 16px 4px #ffefb6,0 -8px 42px 9px #eab7d6b0,0 4px 22px 4px #ffedc390; transform-origin:center; }
+.aperture-glow::after { content:''; position:absolute; top:2px; left:0; width:100%; height:45px; background:linear-gradient(#fff4d780,transparent); mask-image:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent); border-radius:0 0 50% 50%; }
+.hero[data-light-shape="spotlight"] .aperture-glow { left:33%; width:34%; }
+.hero[data-gradient="godrays"] .aperture-glow { left:31%; width:38%; box-shadow:0 -1px 4px 1px #fff,0 -5px 22px 4px #fff0cd,0 -12px 48px 12px #dfbfd2bb; }
+.hero:is([data-gradient="spotlight"],[data-gradient="aperture"],[data-gradient="godrays"]) .gradient-art { background:radial-gradient(ellipse at 50% 38%,#fff0cb99,transparent 45%),radial-gradient(ellipse at 50% 53%,#e4d1e580,transparent 52%); }
+.hero .gradient-art[data-renderer="webgl"] { background:none; }
+.swatch-amber { background:linear-gradient(130deg,#ffc51a,#ff9c29 45%,#ff4230); }
+.swatch-arctic { background:linear-gradient(130deg,#66e4b7,#49cdda 45%,#2160ff); }
+.swatch-spectrum { background:linear-gradient(100deg,#0358f7,#5092c7,#e1ecfe,#ffd400,#fa3d1d,#fd02f5,#ffc0fd); }
+.hero[data-light-palette="1"] .aperture-glow { box-shadow:0 -1px 4px 1px #fffef4,0 -5px 16px 4px #ffda82,0 -8px 42px 9px #ff8b5ab0,0 4px 22px 4px #ffe3ae90; }
+.hero[data-light-palette="2"] .aperture-glow { background:#f1ffff; box-shadow:0 -1px 4px 1px #efffff,0 -5px 16px 4px #a3ffe8,0 -8px 42px 9px #539affb0,0 4px 22px 4px #c1fff290; }
+.hero[data-light-palette="2"] .aperture-glow::after { background:linear-gradient(#c8fff280,transparent); }
+.hero[data-light-palette="3"] .aperture-glow { background:linear-gradient(90deg,#e1ecfe,#fff7cb,#ffc0fd); box-shadow:-45px -6px 32px 4px #0358f733,0 -5px 16px 4px #ffe99a99,45px -8px 35px 6px #fd02f544,0 -1px 4px 1px #fff; }
+.hero[data-light-palette="3"] .aperture-glow::after { background:linear-gradient(90deg,#0358f720,#ffd40025,#fd02f520); mask-image:radial-gradient(ellipse at top,#000,transparent 72%); }
+.hero[data-light-shape="spotlight"] .gradient-art:not([data-renderer="webgl"]) { background:radial-gradient(ellipse at 50% 40%,#ffe4b280,transparent 48%); }
+.hero[data-light-palette="2"] .gradient-art:not([data-renderer="webgl"]) { background:radial-gradient(ellipse at 50% 40%,#a7e8ee80,transparent 48%); }
+.hero[data-light-palette="3"] .gradient-art:not([data-renderer="webgl"]) { background:radial-gradient(ellipse at 35% 40%,#0358f725,transparent 40%),radial-gradient(ellipse at 50% 40%,#ffd40025,transparent 40%),radial-gradient(ellipse at 65% 40%,#fd02f525,transparent 40%); }
+
+/* Selected landing treatment, including the feathered highlight approved in Figma. */
+.final-gradient .hero[data-gradient="spotlight"] .gradient-art:not([data-renderer="webgl"]) { background:center / cover no-repeat url('assets/spotlight-final.png'); }
+.final-gradient .aperture-glow {
+  top:-.75px; height:1.5px; border-radius:0;
+  background:linear-gradient(90deg,#fffdf400,#fffdf40f 8%,#fffdf44d 18%,#fffdf4d9 32%,#fffdf4 43%,#fffdf4 57%,#fffdf4d9 68%,#fffdf44d 82%,#fffdf40f 92%,#fffdf400);
+  filter:blur(.45px);
+}
+@media(max-width:850px) { .final-gradient .type-review { top:auto; bottom:18px; } }
+@media(max-width:600px) { .final-gradient .type-panel { top:auto; bottom:42px; } }
+
+/* Match the stronger color treatment when WebGL is unavailable. */
+.final-gradient .hero[data-gradient="spotlight"] .gradient-art:not([data-renderer="webgl"]) { filter: saturate(2.89) contrast(1.3225); }

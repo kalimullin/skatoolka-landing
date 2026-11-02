@@ -1,0 +1,31 @@
+/* A separate landing study with the live site's quick-start ideas. */
+.version-two .quick-ideas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 750px;
+  margin: 20px auto 0;
+}
+.version-two .idea-chip {
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid rgb(36 35 33 / .08);
+  border-radius: 999px;
+  background: rgb(255 255 255 / .9);
+  box-shadow: 0 2px 10px rgb(40 20 80 / .06);
+  color: var(--ink);
+  font-size: var(--action-font-size);
+  line-height: 20px;
+  font-weight: 400;
+}
+.version-two .idea-chip:active { background: #eae6ee; }
+.version-two .restore-button { font-size: 14px; line-height: 20px; min-height: 32px; }
+.version-two .version-compare { display: inline-flex; font-size: 12px; margin-bottom: 16px; }
+@media (hover: hover) and (pointer: fine) {
+  .version-two .idea-chip:hover { background: #fff; border-color: rgb(36 35 33 / .2); }
+}
+@media (max-width: 760px) {
+  .version-two .quick-ideas { gap: 8px; margin-top: 16px; }
+  .version-two .idea-chip { padding-inline: 14px; }
+}

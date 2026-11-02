@@ -1,0 +1,25 @@
+/* Public plans, synced to the current three-card Figma layout on 15 October. */
+#pricing .current-plans{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:20px}
+#pricing .current-plan{min-width:0}
+#pricing .plan-summary{min-height:402px;gap:0;border:1px solid var(--border-default);box-shadow:none}
+#pricing .plan-purpose{min-height:112px}
+#pricing .price-group{padding:0 0 28px}
+#pricing .plan-controls{margin-top:auto}
+#pricing .plan-controls .button{white-space:nowrap}
+#pricing .plan-controls select{appearance:none;padding-right:44px;background:var(--bg-surface) url('assets/figma-20261015/342-1411-imgSmallChevronDown.svg') right 12px center / 24px no-repeat;color:var(--text-primary);border-color:var(--border-default);cursor:pointer}
+#pricing .free-credits{font-size:14px;line-height:22px;background:var(--bg-subtle)}
+#pricing [data-plan="enterprise"] .current-price strong{white-space:normal;overflow-wrap:normal}
+#pricing [data-plan="enterprise"] .plan-summary{background:var(--bg-surface)}
+#pricing [data-plan="enterprise"] .plan-controls a{display:flex;justify-content:center;align-items:center;text-decoration:none}
+#pricing .plan-included{padding-top:24px}
+#pricing .billing-period span{color:var(--text-secondary)}
+@media(min-width:761px) and (max-width:1099px){#pricing .plan-summary{padding:20px}#pricing .current-price strong{font-size:30px;line-height:36px}#pricing .plan-controls .button{padding-inline:12px;font-size:14px}#pricing .plan-included{padding-inline:20px}}
+@media(max-width:760px){
+ #pricing .current-plans{--plan-width:min(308px,calc(100vw - 64px));--plan-edge:calc((100vw - var(--plan-width))/2);position:relative;display:flex;width:calc(100% + 48px);margin:0 -24px;padding:0 var(--plan-edge);gap:20px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:var(--plan-edge);scrollbar-width:none}
+ #pricing .current-plans::-webkit-scrollbar{display:none}
+ #pricing .current-plan{flex:0 0 var(--plan-width);scroll-snap-align:center}
+ #pricing .plan-summary{min-height:414px}
+ #pricing .price-group{padding-bottom:24px}
+ #pricing .plan-purpose{min-height:112px}
+ #pricing .current-price strong{font-size:38px;line-height:44px}
+}
