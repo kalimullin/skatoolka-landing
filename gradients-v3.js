@@ -140,9 +140,9 @@
       float saturation = 1. + .48 * smoothstep(1.15,4.7,u_time);
       float luminance = dot(color,vec3(.2126,.7152,.0722));
       color = clamp(mix(vec3(luminance),color,saturation),0.,1.);
-      // Slightly stronger triangular grain breaks 8-bit bands without temporal flicker.
+      // Visible fine, monochrome grain: static paper texture, never temporal flicker.
       float grain = hash(gl_FragCoord.xy) + hash(gl_FragCoord.yx + vec2(37.7, 91.3)) - 1.;
-      color += grain * (3.2 / 255.);
+      color += grain * (16.0 / 255.);
       gl_FragColor = vec4(color,1.);
     }
 
