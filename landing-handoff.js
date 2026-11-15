@@ -65,6 +65,12 @@
   document.addEventListener('pointerdown', event => {
     if (!event.target.closest('.nav-disclosure')) closeAll();
   });
+  // Pointer-only opening does not move focus, so Escape must also work from body.
+  document.addEventListener('keydown', event => {
+    if (mobile.matches || event.key !== 'Escape') return;
+    const item = disclosures.find(item => item.toggle.getAttribute('aria-expanded') === 'true');
+    if (item) { event.preventDefault(); close(item,true); }
+  });
   header.querySelector('.mobile-menu-toggle')?.addEventListener('click', () => {
     if (header.querySelector('.mobile-menu-toggle').getAttribute('aria-expanded') === 'false') closeAll();
   });
