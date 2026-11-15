@@ -114,6 +114,9 @@
       float white = exp(-dot(q/(size*.64),q/(size*.64)));
       col = mix(col,vec3(1.,.998,.97),white*halo*.66);
 
+      // The opening spotlight dissolves into the cloud. Its diagonal edge must
+      // not remain as a stripe over the completed gradient.
+      float beam = 1. - smoothstep(3.1,4.7,t);
       float spread = .15+rise*.96+release*.65;
       float width = inputWidth*.115+max(0.,p.y)*spread+release*.20;
       float axis = p.x+p.y*.13;
@@ -121,14 +124,14 @@
       float cone = (1.-smoothstep(.80-release*.35,1.20+release*.65,edge))*above*endFade;
       float core = (1.-smoothstep(.05,.89,edge))*above*endFade;
       vec3 gold = referencePalette(uv);
-      col = mix(col,gold,cone*energy*.39);
-      col = mix(col,vec3(1.,.998,.955),core*energy*mix(.92,1.,progress));
+      col = mix(col,gold,cone*energy*.39*beam);
+      col = mix(col,vec3(1.,.998,.955),core*energy*mix(.92,1.,progress)*beam);
       float fringe = bell((edge-.99)*15.)*above*endFade;
-      col = mix(col,vec3(.93,.66,.86),fringe*energy*.17);
+      col = mix(col,vec3(.93,.66,.86),fringe*energy*.17*beam);
       float shaft = bell(axis/(width*.22))*above*endFade;
-      col = mix(col,vec3(1.,1.,.97),shaft*energy*.33);
+      col = mix(col,vec3(1.,1.,.97),shaft*energy*.33*beam);
       float glow = bell(p.x/max(.01,inputWidth*.16))*bell(p.y/.022);
-      return mix(col,vec3(1.,.988,.90),glow*ignite*mix(.88,1.,progress));
+      return mix(col,vec3(1.,.988,.90),glow*ignite*mix(.88,1.,progress)*beam);
     }
     void main() {
       vec2 uv = vec2(v_uv.x,1.-v_uv.y);
@@ -137,9 +140,9 @@
       float saturation = 1. + .48 * smoothstep(1.15,4.7,u_time);
       float luminance = dot(color,vec3(.2126,.7152,.0722));
       color = clamp(mix(vec3(luminance),color,saturation),0.,1.);
-      // Triangular, static dither breaks 8-bit bands without temporal flicker.
+      // Slightly stronger triangular grain breaks 8-bit bands without temporal flicker.
       float grain = hash(gl_FragCoord.xy) + hash(gl_FragCoord.yx + vec2(37.7, 91.3)) - 1.;
-      color += grain * (2.2 / 255.);
+      color += grain * (3.2 / 255.);
       gl_FragColor = vec4(color,1.);
     }
 
