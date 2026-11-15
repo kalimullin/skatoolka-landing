@@ -6,7 +6,7 @@
   const scenes = [...document.querySelectorAll('.process-scene')];
   const desktopProcess = matchMedia('(min-width: 761px)');
   const process = document.querySelector('.interactive-process');
-  if (!process.hasAttribute('data-process-tabs')) {
+  if (process && !process.hasAttribute('data-process-tabs')) {
   let scrollFrame = 0;
 
   function selectStep(index) {
@@ -102,6 +102,7 @@
   if (!card) return;
   const foil = card.querySelector('.holo-foil');
   const glare = card.querySelector('.holo-glare');
+  if (!foil || !glare) return;
   let bounds, frame = 0, last = 0;
   let x = 0, y = 0, vx = 0, vy = 0, targetX = 0, targetY = 0;
   function tick(now) {
@@ -120,13 +121,13 @@
     }
   }
   function start() { if (!frame) frame = requestAnimationFrame(tick); }
-  card.addEventListener('pointerenter', () => {
-    if (!finePointer.matches || reducedMotion.matches) return;
+  card.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'touch' || !finePointer.matches || reducedMotion.matches) return;
     bounds = card.getBoundingClientRect();
     card.classList.add('is-hovered');
   });
   card.addEventListener('pointermove', event => {
-    if (!bounds || !finePointer.matches || reducedMotion.matches) return;
+    if (event.pointerType === 'touch' || !bounds || !finePointer.matches || reducedMotion.matches) return;
     const px = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
     const py = Math.max(0, Math.min(1, (event.clientY - bounds.top) / bounds.height));
     targetX = (0.5 - py) * 10;
@@ -151,4 +152,7 @@
   reducedMotion.addEventListener('change', () => { reset(); });
   finePointer.addEventListener('change', reset);
   window.addEventListener('blur', reset);
+  window.addEventListener('resize', reset);
+  window.addEventListener('scroll', reset, { passive: true });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) reset(); });
 })();

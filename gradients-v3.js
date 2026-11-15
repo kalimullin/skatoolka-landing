@@ -76,7 +76,7 @@
       if(u_palette==3) {
         centre=.49; dipWidth=.28; dipDepth=.29; softness=.23;
       }
-      float horizon = .31+dipDepth*bell((uv.x-centre)/dipWidth)+drift;
+      float horizon = .23+dipDepth*bell((uv.x-centre)/dipWidth)+drift;
       return max(0.,(horizon+.08-uv.y)/softness);
     }
     // Original spotlight timing and cone from the pre-meeting landing.
@@ -134,10 +134,12 @@
       vec2 uv = vec2(v_uv.x,1.-v_uv.y);
       vec3 color = opening(uv,u_time);
       // Add 40% saturation gradually as the light reaches its final shape.
-      float saturation = 1. + .40 * smoothstep(1.15,4.7,u_time);
+      float saturation = 1. + .48 * smoothstep(1.15,4.7,u_time);
       float luminance = dot(color,vec3(.2126,.7152,.0722));
       color = clamp(mix(vec3(luminance),color,saturation),0.,1.);
-      color += (hash(gl_FragCoord.xy)-.5)/255.;
+      // Triangular, static dither breaks 8-bit bands without temporal flicker.
+      float grain = hash(gl_FragCoord.xy) + hash(gl_FragCoord.yx + vec2(37.7, 91.3)) - 1.;
+      color += grain * (2.2 / 255.);
       gl_FragColor = vec4(color,1.);
     }
 

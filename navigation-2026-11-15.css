@@ -1,0 +1,66 @@
+/* Accepted Figma A: original header, 8px trigger-to-panel gap, static content.
+   Proposed destinations deliberately have no href until their pages exist. */
+body.version-three.suisse .header { --nav-ease: cubic-bezier(.23,1,.32,1); }
+body.version-three.suisse .header .nav-list { display:flex; align-items:center; gap:24px; }
+body.version-three.suisse .header .nav-toggle { display:flex; align-items:center; gap:4px; min-height:32px; padding:4px 0; border:0; border-radius:8px; background:transparent; color:var(--text-primary); font:400 16px/24px Onest,sans-serif; cursor:pointer; white-space:nowrap; }
+body.version-three.suisse .header .nav-caret { display:block; flex:none; width:20px; height:20px; transition:transform 150ms var(--nav-ease); }
+body.version-three.suisse .header .nav-toggle[aria-expanded=true] .nav-caret { transform:rotate(180deg); }
+body.version-three.suisse .header .nav-toggle[aria-expanded=true] { color:#000; }
+body.version-three.suisse .header .nav-toggle:focus-visible { outline:2px solid var(--landing-focus); outline-offset:4px; }
+body.version-three.suisse .header .nav-panel { position:absolute; top:calc(50% + 16px + 8px); left:50%; transform:translateX(-50%); display:grid; grid-template-columns:250px 250px 420px; align-items:start; gap:24px; width:min(1040px,calc(100vw - 48px)); padding:24px; border-radius:24px; background:#fff; box-shadow:0 0 .586px rgb(0 0 0/.2),0 2.342px 4.685px -1.171px rgb(0 0 0/.1); z-index:60; opacity:0; transition:opacity 120ms var(--nav-ease); max-height:calc(100dvh - 96px); overflow-y:auto; overscroll-behavior:contain; }
+body.version-three.suisse .header .nav-panel.is-open { opacity:1; }
+body.version-three.suisse .header .nav-panel[hidden] { display:none; }
+body.version-three.suisse .header .nav-panel[inert] { pointer-events:none; }
+body.version-three.suisse .header .nav-column { display:flex; flex-direction:column; gap:4px; min-width:0; }
+body.version-three.suisse .header .nav-group-title { padding:0 12px; margin:0; color:var(--text-muted,rgba(0,0,0,.5)); font:400 13px/20px Onest,sans-serif; letter-spacing:0; text-transform:none; }
+body.version-three.suisse .header #main-navigation .nav-item { display:flex; flex-direction:column; align-items:stretch; gap:4px; padding:12px; min-height:72px; border-radius:12px; text-decoration:none; white-space:normal; color:var(--text-primary); font:400 13px/20px Onest,sans-serif; }
+body.version-three.suisse .header .nav-item-title { display:block; font-size:16px; line-height:24px; font-weight:600; }
+body.version-three.suisse .header .nav-item-description { display:block; color:var(--text-secondary); font-size:13px; line-height:20px; }
+body.version-three.suisse .header .nav-proposal { cursor:default; }
+body.version-three.suisse .header .nav-feature { display:flex; flex-direction:column; align-items:flex-start; gap:16px; min-width:0; padding:24px; border-radius:16px; background:var(--bg-subtle,rgba(0,0,0,.03)); }
+body.version-three.suisse .header .nav-feature-business { background:#f5f2fa; }
+body.version-three.suisse .header .nav-feature .nav-group-title { padding:0; }
+body.version-three.suisse .header .nav-feature-copy { display:flex; flex-direction:column; gap:8px; }
+body.version-three.suisse .header .nav-feature h3 { margin:0; font:600 24px/28px Onest,sans-serif; letter-spacing:-.5px; }
+body.version-three.suisse .header .nav-feature-copy p { margin:0; color:var(--text-secondary); font:400 14px/22px Onest,sans-serif; }
+body.version-three.suisse .header #main-navigation .nav-feature-cta { display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:8px 12px; border:1px solid var(--border-default); border-radius:12px; color:var(--text-primary); background:transparent; font:400 14px/22px Onest,sans-serif; white-space:normal; text-decoration:none; }
+body.version-three.suisse .header #main-navigation .nav-feature-cta-primary { border-color:#000; background:#000; color:#fff; }
+body.version-three.suisse .header .nav-scenario-categories { grid-column:span 2; display:flex; flex-direction:column; gap:4px; }
+body.version-three.suisse .header .nav-scenario-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+body.version-three.suisse .header[data-nav-input=keyboard] :is(.nav-panel,.nav-caret,.mobile-menu-toggle span) { transition:none; }
+@media (hover:hover) and (pointer:fine) {
+ body.version-three.suisse .header #main-navigation a.nav-item:hover { color:var(--text-primary); background:var(--bg-hover,rgba(0,0,0,.03)); }
+ body.version-three.suisse .header .nav-toggle:hover { color:#000; }
+ body.version-three.suisse .header #main-navigation a.nav-feature-cta:hover { background:rgba(0,0,0,.05); }
+ body.version-three.suisse .header #main-navigation a.nav-feature-cta-primary:hover { background:rgba(0,0,0,.8); }
+}
+@media (min-width:1100px) {
+ body.version-three.suisse .header #main-navigation { position:absolute; left:50%; transform:translateX(-50%); height:32px; min-height:32px; }
+ /* Keep the panel centered on the original 1200px header, not its nav text. */
+ body.version-three.suisse .header .nav-panel { top:calc(100% + 8px); }
+}
+@media (min-width:761px) and (max-width:1099px) {
+ body.version-three.suisse .header .nav-list { gap:16px; }
+ body.version-three.suisse .header .nav-toggle, body.version-three.suisse .header #main-navigation .nav-pricing { font-size:14px; }
+ body.version-three.suisse .header .nav-panel { gap:16px; padding:20px; grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.35fr); }
+ body.version-three.suisse .header .nav-feature { padding:20px; }
+}
+@media (max-width:760px) {
+ body.version-three.suisse .header #main-navigation.is-open { padding:12px; border:0; border-radius:24px; }
+ body.version-three.suisse .header .nav-list { display:flex; flex-direction:column; align-items:stretch; gap:4px; width:100%; }
+ body.version-three.suisse .header .nav-toggle, body.version-three.suisse .header #main-navigation .nav-pricing { display:flex; justify-content:space-between; width:100%; min-height:44px; padding:10px 12px; border-radius:12px; font-size:16px; line-height:24px; }
+ body.version-three.suisse .header .nav-toggle[aria-expanded=true] { background:var(--bg-hover,rgba(0,0,0,.03)); }
+ body.version-three.suisse .header .nav-panel { position:static; display:flex; flex-direction:column; gap:16px; width:100%; max-height:none; transform:none; padding:8px 0 16px; margin-top:8px; border-radius:0; box-shadow:none; overflow:visible; transition:none; }
+ body.version-three.suisse .header .nav-panel>*, body.version-three.suisse .header .nav-scenario-columns>* { width:100%; }
+ body.version-three.suisse .header .nav-scenario-columns { display:flex; flex-direction:column; gap:4px; }
+ body.version-three.suisse .header .nav-scenario-categories { gap:4px; }
+ body.version-three.suisse .header .nav-feature { padding:20px; }
+ body.version-three.suisse .header .nav-feature h3 { font-size:22px; line-height:26px; }
+ body.version-three.suisse .header #main-navigation .nav-item { padding:12px; min-height:72px; }
+}
+@media (prefers-reduced-motion:reduce) {
+ body.version-three.suisse .header :is(.nav-panel,.nav-caret) { transition:none; }
+}
+@media (min-width:1100px) {
+ body.version-three.suisse .header .header-actions { grid-column:3; justify-self:end; margin-left:auto; }
+}

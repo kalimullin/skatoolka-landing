@@ -37,19 +37,19 @@
     nav.classList.toggle('is-open', open);
     backdrop.hidden = !open;
     setMenuState(open);
-    if (open) nav.querySelector('.mobile-nav-groups a').focus({ preventScroll: true });
+    if (open) nav.querySelector('.nav-pricing').focus({ preventScroll: true });
   });
   // Close before the existing login/start handlers open a dialog or focus the form.
   header.addEventListener('click', event => {
     if (event.target.closest('#login, .header-start, .brand')) closeMenu();
   }, true);
-  nav.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(true); });
+  nav.addEventListener('click', event => { if (mobile.matches && event.target.closest('a')) closeMenu(); });
   document.addEventListener('pointerdown', event => { if (!header.contains(event.target)) closeMenu(); });
   document.addEventListener('keydown', event => {
     if (toggle.getAttribute('aria-expanded') !== 'true') return;
     if (event.key === 'Escape') closeMenu(true);
     if (event.key === 'Tab') {
-      const items = [...header.querySelectorAll('a, button')].filter(element => element.getClientRects().length);
+      const items = [...header.querySelectorAll('a, button')].filter(element => element.getClientRects().length && !element.closest('[inert]') && !element.disabled);
       const first = items[0], last = items[items.length - 1];
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }

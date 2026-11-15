@@ -1,0 +1,33 @@
+/* Targeted landing polish. No changes to product flows or plan entitlements. */
+#pricing .current-plans{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+#pricing .plan-summary{min-height:446px;padding:24px;position:relative}
+#pricing .current-price{flex-wrap:wrap;white-space:normal;gap:4px 8px}
+#pricing .current-price strong{font-size:32px;line-height:40px}
+#pricing .plan-controls .button{gap:6px;padding-inline:12px}
+#pricing .plan-included>p{font-size:14px;line-height:22px;color:var(--text-secondary)}
+#pricing .plan-controls a{display:flex;text-decoration:none}
+/* Restore the original on-card foil/glare from landing.css and spring tilt from
+   landing-v2.js. Reference: https://poke-holo.simey.me/ (pointer-driven, not aura).
+   Decorative layers stay behind text and never intercept controls. */
+#pricing .holo-card{isolation:isolate;overflow:visible;transform-origin:center;backface-visibility:hidden}
+#pricing .holo-card .holo-foil,#pricing .holo-card .holo-glare{display:block}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){
+ #pricing .holo-card{transform:none!important}
+ #pricing .holo-card .holo-foil,#pricing .holo-card .holo-glare{opacity:0;transition:none}
+}
+@media(max-width:760px){
+ /* Existing oversized decorative glyphs, not a new icon set. */
+ body.version-three.suisse .benefits article:nth-child(n) .benefit-art{width:220px;height:220px;right:-40px;top:auto;bottom:-65px;filter:none;opacity:1}
+ #pricing .current-plans{display:flex;padding-block:24px;margin-block:-24px}
+ #pricing .plan-summary{min-height:446px}
+ #pricing .current-price strong{font-size:38px;line-height:44px}
+}
+@media(max-width:760px){
+ body.version-three.suisse .comparison-row{padding:16px;gap:16px}
+ body.version-three.suisse .comparison-row>div{display:flex;flex-direction:column;gap:4px;font-weight:400;padding:0;min-width:0}
+ body.version-three.suisse .comparison-row>div:last-child{padding:12px;border-radius:12px;background:rgb(181 154 217/.15)}
+ body.version-three.suisse .comparison-row>div:not(:last-child){border-top:1px solid var(--border-default);padding-top:12px}
+ body.version-three.suisse .comparison-row span{font-size:12px;line-height:18px;color:var(--text-secondary)}
+ body.version-three.suisse .comparison-row>div:last-child span{font-weight:600;color:var(--text-primary)}
+ body.version-three.suisse .comparison-row p{font-size:14px;line-height:22px}
+}
